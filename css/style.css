@@ -4,3 +4,45 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+main {
+    background-color: #7fffd4;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-grid {
+    width: 600px;
+    height: 600px;
+    background-color: #7fffd4;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+.square {
+    background-color: #7fffd4;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#main-grid.easy .square {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+}
+#main-grid.normal .square {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+#main-grid.hard .square {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+.square.green {
+    background-color: #6495ed;
+}
+.square.red {
+    background-color: #dc143c;
+}
