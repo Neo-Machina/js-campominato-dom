@@ -114,22 +114,22 @@ function startGame() {
                 notClickedCell();
             }
     }
+
+    // Rendere tutte le celle non cliccabili e scoprire tutte le bombe nascoste
+    function notClickedCell() {
+        const allCell = document.querySelectorAll('.square');
+        for(let i = 0; i < allCell.length; i++) {
+            let singleCell = allCell[i];
+            // Celle non più cliccabili
+            singleCell.style.pointerEvents = 'none';
+
+            // Se il numero di questa cella è tra le bombe, gli aggiungo la classe red
+            const singleCellNumber = parseInt(singleCell.querySelector('span').innerHTML);
+            if (bombs.includes(singleCellNumber)) {
+                singleCell.classList.add('red');
+            }
+        } 
 }
-
-// Rendere tutte le celle non cliccabili e scoprire tutte le bombe nascoste
-function notClickedCell() {
-    const allCell = document.querySelectorAll('.square');
-    for(let i = 0; i < allCell.length; i++) {
-        let singleCell = allCell[i];
-        // Celle non più cliccabili
-        singleCell.style.pointerEvents = 'none';
-
-        // Se il numero di questa cella è tra le bombe, gli aggiungo la classe red
-        const singleCellNumber = parseInt(singleCell.querySelector('span').innerHTML);
-        if (bombs.includes(singleCellNumber)) {
-            singleCell.classList.add('red');
-        }
-    }
 }
 
 // ------------------
