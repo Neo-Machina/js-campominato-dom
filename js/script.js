@@ -97,6 +97,7 @@ function startGame() {
         if(bombs.includes(cell)) {
             this.classList.add('red');
             userMessage.innerHTML = `Hai perso. Hai indovinato ${guessedArrayNumbers.length} numeri.`;
+            notClickedCell();
              
         // Altrimenti salvo il numero nell'array dei numeri indovinati 
         } else {
@@ -110,7 +111,24 @@ function startGame() {
             // il gioco finisce e compare un testo (Hai vinto)
             if(guessedArrayNumbers.length === maxAttemptsNumbers) {
                 userMessage.innerHTML = 'Hai vinto !!!';
+                notClickedCell();
             }
+    }
+}
+
+// Rendere tutte le celle non cliccabili e scoprire tutte le bombe nascoste
+function notClickedCell() {
+    const allCell = document.querySelectorAll('.square');
+    for(let i = 0; i < allCell.length; i++) {
+        let singleCell = allCell[i];
+        // Celle non più cliccabili
+        singleCell.style.pointerEvents = 'none';
+
+        // Se il numero di questa cella è tra le bombe, gli aggiungo la classe red
+        const singleCellNumber = parseInt(singleCell.querySelector('span').innerHTML);
+        if (bombs.includes(singleCellNumber)) {
+            singleCell.classList.add('red');
+        }
     }
 }
 
