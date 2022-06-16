@@ -40,7 +40,7 @@ main {
     width: calc(100% / 7);
     height: calc(100% / 7);
 }
-.square.green {
+.square.blue {
     background-color: #6495ed;
 }
 .square.red {

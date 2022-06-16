@@ -19,9 +19,11 @@ button.addEventListener('click', startGame)
 function startGame() {
     // Griglia
     const mainGrid = document.getElementById('main-grid');
-    // Quando l'utente inizia una nuova partita, svuoto la griglia e le sue classi create in precedenza
+    const userMessage = document.getElementById('user-message');
+    // Quando l'utente inizia una nuova partita, svuoto la griglia, le sue classi create in precedenza e l'user-message
     mainGrid.innerHTML = '';
     mainGrid.className = '';
+    userMessage.innerHTML = '';
 
     // 1 - Chiediere un livello di difficoltà (1,2,3) all'utente, con un prompt 
     // se si sceglie 1, il range di numeri possibili del gioco è 1-100
@@ -77,20 +79,38 @@ function startGame() {
             cell.classList.add('square');
             cell.addEventListener('click', handleCellClick);
 
-             // Aggiungere il testo 
+            // Aggiungere il testo 
             // Aggiungere una classe
             mainGrid.append(cell);
         }
     }
 
     function handleCellClick() {
-        // leggere il numero nello span e fare un parseInt
+        // Rendere la cella non più cliccabile
+        this.style.pointerEvents = 'none';
+
+        // Leggere il numero nello span e fare un parseInt
+        let cell = parseInt(this.querySelector('span').innerHTML);
+
         // Se il numero è incluo dentro l'array delle bombe la cella cliccata diventa rossa
         // e sotto compare un testo (Hai perso)
+        if(bombs.includes(cell)) {
+            this.classList.add('red');
+            userMessage.innerHTML = `Hai perso. Hai indovinato ${guessedArrayNumbers.length} numeri.`;
+             
         // Altrimenti salvo il numero nell'array dei numeri indovinati 
-        // la cella diventa azzurra
+        } else {
+            // la cella diventa azzurra
+            this.classList.add('blue');
+        }
+            if(!guessedArrayNumbers.includes(cell)) {
+                guessedArrayNumbers.push(cell);
+            }
             // Quando la lunghezza dell'array dei numeri indovinati è uguale al numero di massimo di tentativi 
             // il gioco finisce e compare un testo (Hai vinto)
+            if(guessedArrayNumbers.length === maxAttemptsNumbers) {
+                userMessage.innerHTML = 'Hai vinto !!!';
+            }
     }
 }
 
