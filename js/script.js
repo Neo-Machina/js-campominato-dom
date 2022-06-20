@@ -90,11 +90,11 @@ function startGame() {
         this.style.pointerEvents = 'none';
 
         // Leggere il numero nello span e fare un parseInt
-        let cell = parseInt(this.querySelector('span').innerHTML);
+        let cellValue = parseInt(this.querySelector('span').innerHTML);
 
-        // Se il numero è incluo dentro l'array delle bombe la cella cliccata diventa rossa
+        // Se il numero è incluso dentro l'array delle bombe la cella cliccata diventa rossa
         // e sotto compare un testo (Hai perso)
-        if(bombs.includes(cell)) {
+        if(bombs.includes(cellValue)) {
             this.classList.add('red');
             userMessage.innerHTML = `Hai perso. Hai indovinato ${guessedArrayNumbers.length} numeri.`;
             notClickedCell();
@@ -104,8 +104,8 @@ function startGame() {
             // la cella diventa azzurra
             this.classList.add('blue');
         }
-            if(!guessedArrayNumbers.includes(cell)) {
-                guessedArrayNumbers.push(cell);
+            if(!guessedArrayNumbers.includes(cellValue)) {
+                guessedArrayNumbers.push(cellValue);
             }
             // Quando la lunghezza dell'array dei numeri indovinati è uguale al numero di massimo di tentativi 
             // il gioco finisce e compare un testo (Hai vinto)

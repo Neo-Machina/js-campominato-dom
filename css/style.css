@@ -5,21 +5,76 @@
     box-sizing: border-box;
 }
 
+/* COMMON */
+body {
+    font-family: sans-serif;
+}
+
+.container {
+    width: 70%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+/* HEADER */
+header {
+    height: 70px;
+}
+.header-flex {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Header left-content */
+.left-content-flex {
+    display: flex;
+    align-items: center;
+}
+.logo {
+    width: 35px;
+}
+h1 {
+    font-size: 28px;
+    margin-left: 15px;
+}
+/* Header right-content */
+header div label {
+    font-size: 14px;
+}
+#user-level-difficulty {
+    width: 9rem;
+    background-color: #e9e9ed;
+    border: 2px solid #b5b5bf;
+    border-radius: 5px;
+    font-size: 13px;
+}
+#btn-game {
+    width: 4.5rem;
+    background-color: #e9e9ed;
+    border: 2px solid #b5b5bf;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+/* MAIN */
 main {
     background-color: #7fffd4;
-    padding: 50px;
+    padding: 50px 0 21px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
+/* Grid */
 #main-grid {
-    width: 600px;
-    height: 600px;
+    width: 420px;
+    height: 420px;
     background-color: #7fffd4;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+    margin-top: 60px;
 }
 .square {
     background-color: #7fffd4;
@@ -45,4 +100,18 @@ main {
 }
 .square.red {
     background-color: #dc143c;
+}
+/* User-message */
+#user-message {
+    padding-top: 70px;
+}
+
+/* FOOTER */
+footer {
+    height: 50px;
+}
+.flex-ft {
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
